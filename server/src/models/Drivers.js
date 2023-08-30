@@ -32,6 +32,11 @@ module.exports = (sequelize) => {
     birthdate: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    from_DB: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
   },{
     timestamps: false
