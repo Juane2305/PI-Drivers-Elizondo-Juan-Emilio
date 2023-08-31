@@ -1,23 +1,29 @@
-const { getDrivers, getDriversById } = require('../controllers/driversController');
+const { getDrivers, getDriversById, getDriversByName } = require('../controllers/driversController');
 
 const getDriversHandler = async(req, res) => {
+    const { name } = req.query;
 
     try {
-        const allDrivers = await getDrivers();
-        res.status(200).json(allDrivers)
+        if(name){
+            let result = await getDriversByName(name);
+            return res.status(200).json(result);
+        }
+        else{
+            const allDrivers = await getDrivers();
+            return res.status(200).json(allDrivers)
+        }
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(404).json({error: error.message})
     }
 }
 
 const getDriverByIdHandler = async(req, res) => {
-    const { idDriver } = req.params
-    let origin = isNaN(idDriver) ? 'db' : 'api';
+
+    const { id } = req.params
+    let origin = isNaN(id) ? 'db' : 'api';
 
     try {
-        let result = getDriversById(idDriver, origin);
-
-        if(result.error) throw new Error(result.error);
+        let result = await getDriversById(id, origin);
 
         res.status(200).json(result);
 
@@ -27,7 +33,21 @@ const getDriverByIdHandler = async(req, res) => {
 }
 
 
+const getDriversByNameHandler = async(req, res) => {
+    const { name } = req.query;
+    try {
+        if(name){
+            let result = await getDriversByName(name);
+            
+            return res.status(200).json(result);
+        }
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+};
+
 module.exports ={
     getDriversHandler,
     getDriverByIdHandler,
+    getDriversByNameHandler
 }
