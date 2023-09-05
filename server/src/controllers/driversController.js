@@ -81,7 +81,6 @@ const getDriversById = async(id, origin) => {
                     through: {attributes: []}
                 }]
             });
-
             if(driverDB) {
                 return {
                     id: driverDB.id,
@@ -99,11 +98,8 @@ const getDriversById = async(id, origin) => {
             }
         }
         else{
-
             let result = await axios('http://localhost:5000/drivers')
             let driverr = result.data.find(driver => driver.id === Number(id))
-            
-
                 let driverDetail = {
                     id: driverr.id,
                     name: driverr.name.forename,
@@ -114,8 +110,7 @@ const getDriversById = async(id, origin) => {
                     birthdate: driverr.dob,
                     team: driverr.teams
                 }
-                return driverDetail;
-            
+                return driverDetail;      
         }
 
 
@@ -131,18 +126,16 @@ const getDriversByName = async(name) => {
     
     let name2 = name.toLowerCase();
     let drivers = await getDrivers();
-    let resultadoNombre = drivers.filter((driver) => driver.name.toLowerCase().includes(name2))
-    let resultadoApellido = drivers.filter((driver) => driver.lastname.toLowerCase().includes(name2));
+    let resultadoNombre = drivers.filter((driver) => driver.name.toLowerCase().includes(name2));
 
-    if(resultadoApellido.length > 15) {
-        let sliced = resultadoApellido.slice(0,15)
+    if(resultadoNombre.length > 15) {
+        let sliced = resultadoNombre.slice(0,15)
         
         return sliced;
     }
-    if(resultadoApellido.length < 15){
-        return resultadoApellido;
+    else if(resultadoNombre.length < 15){
+        return resultadoNombre;
     }
-    
     else{
         throw new Error('No existe ningún piloto con el nombre especificado')
     }
@@ -150,22 +143,27 @@ const getDriversByName = async(name) => {
 }
 
 
-// const postDriver = async(name, lastname, description, image, nationality, birthdate, team) => {
-//     if(!name || !lastname || !description || !image || !nationality || !birthdate || !team){
-//         throw new Error('Falta información. Complete todos los campos requeridos.')
-//     }
-//     else {
-//         let newDriver = {
-//             name: name,
-//             lastname: lastname,
-//             description: description,
-//             image: image,
-//             nationality: nationality,
-//             birthdate: birthdate,
-//         }
-//         let 
-//     }
-// }
+const createNewDriver = async(name, lastname, description, image, nationality, birthdate, team) => {
+    if(!name || !lastname || !description || !image || !nationality || !birthdate || !team){
+        throw new Error('Falta información. Complete todos los campos requeridos.')
+    }
+    else {
+        let newDriver = await Driver.create({
+            name: name,
+            lastname: lastname,
+            description: description,
+            image: image,
+            nationality: nationality,
+            birthdate: birthdate,
+        })
+        let team1 = await Team.findAll({
+            where: {
+                name: team
+            }
+        })
+        await newDriver.addTeam(team1);
+    }
+}
 
 
 
@@ -175,5 +173,6 @@ const getDriversByName = async(name) => {
 module.exports = {
     getDrivers,
     getDriversById,
-    getDriversByName
+    getDriversByName,
+    createNewDriver
 }
