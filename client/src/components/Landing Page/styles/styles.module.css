@@ -1,0 +1,37 @@
+
+.background {
+    background-image: url('../img/background1.jpg');
+    width: 100vw;
+    height: 100vw;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    text-align: center;
+}
+
+
+.container{
+    line-height: 70px; 
+    text-align: center;
+}
+
+
+.button{
+    background-color: rgb(214, 13, 13);
+    width: 150px;
+    height: 60px;
+    font-size: 25px;
+    
+}
+.button:hover{
+     transform: rotate(1turn);
+}
+
+.f{
+    color: rgb(214, 13, 13);
+}
+
+.title{
+    font-size: 80px;
+    font-family:fantasy
+}
