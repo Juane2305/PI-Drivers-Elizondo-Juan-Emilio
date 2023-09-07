@@ -1,29 +1,13 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { getAllDrivers } from '../../redux/actions';
-import { useDispatch, useSelector } from 'react-redux'
+import style from './styles/styles.module.css'
 
-
-const Card = () => {
-
-    const dispatch = useDispatch();
-    const allDrivers = useSelector(state => state.allDrivers)
-    console.log(allDrivers);
-    
-
-    useEffect(() => {
-        dispatch(getAllDrivers());
-      }, [dispatch])
-
+const Card = ({driver}) => {
 
     return (
-        <div>
-            <h1>HOME PAGE</h1>
-            {allDrivers.map((driver) => {
-                return(
-                    <h2 key={driver.id}>{`${driver.name}  ${driver.lastname}`}</h2>
-                )
-            })}
+        <div className={style.card}>
+            <img src={driver.image} alt="driver image" className={style.image}/>
+            <h1>{`${driver.name} ${driver.lastname}`}</h1>
+            <h2>Teams: {driver.team}</h2>
+            
         </div>
     );
 };

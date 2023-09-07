@@ -23,9 +23,7 @@
     font-size: 25px;
     
 }
-.button:hover{
-     transform: rotate(1turn);
-}
+
 
 .f{
     color: rgb(214, 13, 13);
