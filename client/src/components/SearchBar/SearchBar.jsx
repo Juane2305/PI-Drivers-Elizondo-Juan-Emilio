@@ -1,11 +1,11 @@
+import styles from './searchBar.module.css'
 
-
-const SearchBar = () => {
+const SearchBar = ({handleChange, handleSubmit}) => {
     return (
-        <div>
-            <form>
-                <input type="search" value={name} placeholder="Ingresa un nombre..." />
-                <button>Buscar</button>
+        <div className={styles.container}>
+            <form onChange={ handleChange } >
+                <input type="search" placeholder="Ingresa un nombre..." />
+                <button type='submit' onClick={ handleSubmit }>Buscar</button>
             </form>
         </div>
     );

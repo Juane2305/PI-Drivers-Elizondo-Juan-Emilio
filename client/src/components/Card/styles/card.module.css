@@ -1,0 +1,41 @@
+.card{
+    color: aliceblue;
+    font-weight: lighter;
+    border-radius: 10px;
+    margin: 80px;
+    width: 400px;
+    height: 200px;
+    background-color: rgba(26, 23, 23, 0.918);
+    position: relative;
+    transform: translateZ(0);
+    transition: transform 0.35s ease-out;
+    cursor: pointer;
+}
+.card:hover{
+    transform: scale(1.05);
+}
+
+
+.image{
+    margin-top: 20px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: absolute;
+    left: 110px;
+    bottom: 100px;
+}
+
+.nameTeams{ 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: end;
+    padding-bottom: 10px;
+ }
+
+
+ .name {
+    font-size: 25px;
+    padding-bottom: 10px;
+ }

@@ -1,14 +1,14 @@
 import Card from "../Card/Card";
-import style from './style.module.css'
+import style from './cardList.module.css'
 
-const CardList = ({drivers}) => {
+const CardList = ({allDrivers}) => {
 
-    const driverList = drivers
+    const driversList = allDrivers;
 
     return (
         <div className={style.cardList}>
-            {driverList?.map(driver => (
-                <Card driver={driver}/>
+            {driversList?.map(driver => (
+                <Card key={driver.id} driver={driver}/>
             ))}
         </div>
         
