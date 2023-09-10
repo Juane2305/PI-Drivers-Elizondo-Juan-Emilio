@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_DRIVERS, GET_BY_NAME, GET_BY_DETAIL, RESET_DETAIL } from "./action-types";
+import { GET_ALL_DRIVERS, GET_BY_NAME, GET_BY_DETAIL, RESET_DETAIL, GET_ALL_TEAMS } from "./action-types";
 
 export const getAllDrivers = () => {
     return async function(dispatch){
@@ -28,5 +28,13 @@ export const getByDetail = (id) => {
 export const resetDetail = ()=> {
     return{
         type: RESET_DETAIL
+    }
+}
+
+export const getAllTeams = () => {
+    return async function(dispatch){
+        const response = await axios('http://localhost:3001/teams')
+        let teamsList = response.data.map((team) => team.name)
+        return dispatch({type: GET_ALL_TEAMS, payload: teamsList})
     }
 }

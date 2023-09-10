@@ -1,7 +1,8 @@
-import { GET_ALL_DRIVERS, GET_BY_NAME, GET_BY_DETAIL, RESET_DETAIL } from "./action-types";
+import { GET_ALL_DRIVERS, GET_BY_NAME, GET_BY_DETAIL, RESET_DETAIL, GET_ALL_TEAMS } from "./action-types";
 
 const initialState = {
     allDrivers: [],
+    allTeams: [],
     driversCopy: [],
     driverDetail: {}
 };
@@ -16,6 +17,8 @@ const reducer = (state = initialState, { type, payload }) => {
             return {...state, driverDetail:payload}
         case RESET_DETAIL:
             return {...state, driverDetail:{}}
+        case GET_ALL_TEAMS:
+            return{...state, allTeams:payload}
         default:
             return{...state}
     }
