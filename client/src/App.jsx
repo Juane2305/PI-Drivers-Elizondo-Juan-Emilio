@@ -4,16 +4,11 @@ import LandingPage from './views/Landing Page/LandingPage';
 import Home from './views/Home/Home';
 import Detail from './views/Detail/Detail';
 import Create from './views/Create/Create';
-import axios from 'axios';
+
 
 
 function App() {
 
-  // function onSearch(name) {
-  //   axios(`http://localhost:3001/drivers/?name=${name}`).then((response)=>{
-
-  //   })
-  // }
 
   return (
       <div className='App.css'>

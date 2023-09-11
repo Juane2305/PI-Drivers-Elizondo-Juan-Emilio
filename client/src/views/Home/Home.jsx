@@ -4,12 +4,15 @@ import { getAllDrivers, getByName } from "../../redux/actions";
 import CardList from "../../components/CardList/CardList";
 import NavBar from "../../components/NavBar/NavBar";
 import styles from './home.module.css'
+import Pagination from "./Pagination/Pagination";
 
 
 const Home = () => {
 
     const dispatch = useDispatch();
     const allDrivers = useSelector((state)=> state.allDrivers);
+    const [driversQt, setDriversQt] = useState(9)
+    const [currentPage, setCurrentPage] = useState(1)
     const [searchString, setSearchString] = useState("");
 
     const handleChange = (e) => {
@@ -22,6 +25,19 @@ const Home = () => {
         e.preventDefault()
         dispatch(getByName(searchString))
     }
+
+
+
+    //Pagination
+    const indexFin = currentPage * driversQt;
+    const indexIni = indexFin - driversQt;
+
+    const nDrivers = allDrivers.slice(indexIni, indexFin)
+
+    const nPages = Math.ceil(allDrivers.length / driversQt);
+
+
+
 
     //*Filtro sobre el estado
     // const [filtered, setFiltered] = useState(allDrivers);
@@ -47,7 +63,12 @@ const Home = () => {
     return (
         <div className={styles.home}>
             <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
-            <CardList allDrivers={allDrivers}/>
+            <CardList nDrivers={nDrivers}/>
+            <Pagination 
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            nPages={nPages}
+            />
         </div>
     );
 };

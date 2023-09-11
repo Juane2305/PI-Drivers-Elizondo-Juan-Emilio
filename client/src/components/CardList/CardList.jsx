@@ -1,9 +1,9 @@
 import Card from "../Card/Card";
 import style from './cardList.module.css'
 
-const CardList = ({allDrivers}) => {
+const CardList = ({nDrivers}) => {
 
-    const driversList = allDrivers;
+    const driversList = nDrivers;
 
     return (
         <div className={style.cardList}>

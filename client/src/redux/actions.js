@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_DRIVERS, GET_BY_NAME, GET_BY_DETAIL, RESET_DETAIL, GET_ALL_TEAMS } from "./action-types";
+import { GET_ALL_DRIVERS, GET_BY_NAME, GET_BY_DETAIL, RESET_DETAIL, GET_ALL_TEAMS, CREATE_NEW_DRIVER, FILTER_BY_BIRTHDATE, FILTER_BY_ORIGIN, FILTER_BY_TEAM } from "./action-types";
 
 export const getAllDrivers = () => {
     return async function(dispatch){
@@ -36,5 +36,22 @@ export const getAllTeams = () => {
         const response = await axios('http://localhost:3001/teams')
         let teamsList = response.data.map((team) => team.name)
         return dispatch({type: GET_ALL_TEAMS, payload: teamsList})
+    }
+}
+
+
+
+export const createNewDriver = (payload) => {
+    return async function(dispatch){
+        const newDriver = await axios('http://localhost:3001/drivers', payload);
+        return newDriver
+    }
+}
+
+
+export const filterByOrigin = () => {
+    return {
+        type: FILTER_BY_ORIGIN,
+        payload
     }
 }

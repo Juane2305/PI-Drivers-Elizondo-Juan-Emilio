@@ -1,0 +1,20 @@
+.div {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    color: rgb(204, 213, 223);
+}
+
+.h3{
+    text-align: center;
+    background-color: rgba(235, 17, 17, 0.37);
+    border-radius: 5px;
+    width: 60px;
+    height: 25px;
+    cursor: pointer;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 20px;
+}
+

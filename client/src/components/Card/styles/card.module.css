@@ -4,8 +4,8 @@
     border-radius: 10px;
     margin: 80px;
     width: 400px;
-    height: 200px;
-    background-color: rgba(26, 23, 23, 0.918);
+    height: 350px;
+    background-color: rgba(27, 22, 22, 0.918);
     position: relative;
     transform: translateZ(0);
     transition: transform 0.35s ease-out;
@@ -17,13 +17,13 @@
 
 
 .image{
-    margin-top: 20px;
     width: 180px;
     height: 180px;
-    border-radius: 50%;
+    border-radius: 30px;
     position: absolute;
     left: 110px;
-    bottom: 100px;
+    bottom: 140px;
+
 }
 
 .nameTeams{ 
@@ -37,5 +37,12 @@
 
  .name {
     font-size: 25px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
+ }
+
+
+ .link{
+    color: aliceblue;
+    text-decoration: none;
+    font-style: italic;
  }

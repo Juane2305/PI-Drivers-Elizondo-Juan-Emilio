@@ -2,8 +2,8 @@ import { getByDetail, resetDetail } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import styles from './detail.module.css'
 import { Link } from 'react-router-dom';
-import styles from './detail.modules.css'
 
 
 
@@ -26,14 +26,24 @@ const Detail = () => {
 
 
     return (
-        <div>
-            <h3>ID: {driverDetail?.id}</h3>
-            <h1>{driverDetail?.name} {driverDetail?.lastname}</h1>
-            <h3>{driverDetail?.nationality}</h3>
-            <img src={driverDetail?.image ? driverDetail.image : 'img'} alt="img" />
-            <p>{driverDetail?.description}</p>
-            <span>Birthdate: {driverDetail?.birthdate}</span>
-            <p>Teams: {driverDetail?.team}</p>
+        <div className={styles.container}>
+            <Link to='/home'>
+                <button className={styles.button}>Home</button>
+            </Link>
+            <div className={styles.containerDetail}>
+                <h3>ID: {driverDetail?.id}</h3>
+                <div className={styles.mainBox}>
+                    <h1>{driverDetail?.name} {driverDetail?.lastname}</h1>
+                    <h3>{driverDetail?.nationality}</h3>
+                    <img className={styles.img} src={driverDetail?.image ? driverDetail.image : 'img'} alt="img" />
+                </div>
+                <div className={styles.infoDiv}>
+                    <p><strong>Description: </strong>{driverDetail?.description}</p>
+                    <span><strong>Birthdate:</strong> {driverDetail?.birthdate}</span>
+                    <p><strong>Teams:</strong> {driverDetail?.team}</p>
+                </div>
+            </div>
+
         </div>
     );
 };

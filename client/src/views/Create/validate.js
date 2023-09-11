@@ -1,7 +1,7 @@
 const validate = ({name, lastname, nationality, image, birthdate, description, team}) => {
     let errors = {}
     let regexNotNumbers = /([0-9])+/;
-    let regexImg= /(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png|pnj)/;
+    let regexImg= (/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
 
     if(!name){
         errors.name = 'Por favor, ingrese un nombre'

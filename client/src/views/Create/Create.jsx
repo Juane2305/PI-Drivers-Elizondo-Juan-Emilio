@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
-import styles from './create.modules.css'
+import styles from './create.module.css'
+import { Link } from 'react-router-dom';
 import validate from './validate';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllTeams } from '../../redux/actions';
+import { getAllTeams, createNewDriver } from '../../redux/actions';
 
 const Create = () => {
 
 
     const dispatch = useDispatch();
     const teams = useSelector((state)=>state.allTeams)
-
-
-
 
     const [input,setInput] = useState({
         name: '',
@@ -65,6 +63,18 @@ const Create = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        dispatch(createNewDriver(input))
+        console.log(input);
+        alert('El piloto ha sido creado correctamente')
+        setInput({
+            name: '',
+            lastname: '',
+            nationality: '',
+            image: '',
+            birthdate: '',
+            description: '',
+            team: []
+        })
     }
 
 
@@ -74,8 +84,16 @@ const Create = () => {
         dispatch(getAllTeams())
     }, []);
 
+
+
+
     return (
         <div>
+            <div>
+                <Link to='/home'>
+                    <button>Home</button>
+                </Link>
+            </div>
             <form>
                 <div>
                     <label>Name
@@ -115,11 +133,13 @@ const Create = () => {
                 </div>
                 <div>
                     <label>Teams
-                        <select value={teams} onChange={handleTeamChoices}>
+                        <select value={teams} onChange={(e) =>handleTeamChoices(e)}>
                             <option value="all"></option>
                             {teams.map((team)=>{
                                 return(
-                                    <option value={team} key={team}>{team}</option>
+                                    <option value={team} key={team}>
+                                        {team}
+                                    </option>
                                 )
                             })}
                         </select>
@@ -146,7 +166,7 @@ const Create = () => {
                 {input.team.map((team) => 
                     <div>
                         <p>{team}</p>
-                        <button onClick={handleDelete}>X</button>
+                        <button onClick={()=>handleDelete(team)}>X</button>
                     </div>
                 )}
             </div>
