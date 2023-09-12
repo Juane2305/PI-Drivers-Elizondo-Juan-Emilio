@@ -43,15 +43,22 @@ export const getAllTeams = () => {
 
 export const createNewDriver = (payload) => {
     return async function(dispatch){
-        const newDriver = await axios('http://localhost:3001/drivers', payload);
+        const newDriver = await axios.post('http://localhost:3001/drivers', payload);
         return newDriver
     }
 }
 
 
-export const filterByOrigin = () => {
+export const filterByOrigin = (origin) => {
     return {
         type: FILTER_BY_ORIGIN,
+        payload: origin
+    }
+}
+
+export const filterByTeam = (payload) => {
+    return{
+        type: FILTER_BY_TEAM,
         payload
     }
 }

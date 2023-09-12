@@ -38,22 +38,6 @@ const Home = () => {
 
 
 
-
-    //*Filtro sobre el estado
-    // const [filtered, setFiltered] = useState(allDrivers);
-    
-
-
-    
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     const filtered = allDrivers.filter(driver=>driver.name.toLowerCase().includes(searchString.toLowerCase()))
-    //     setFiltered(filtered)
-    // }
-
-
-
     useEffect(() => {
         dispatch(getAllDrivers())
     }, [dispatch])

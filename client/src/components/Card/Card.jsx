@@ -10,7 +10,7 @@ const Card = ({driver}) => {
                 <img src={driver.image} alt="driver image" className={style.image}/>
                 <div className={style.nameTeams}>
                     <p className={style.name}>{`${driver.name} ${driver.lastname}`}</p>
-                    <p>Team/s: {driver.team}</p>
+                    <p><strong>Team/s:</strong> {driver.team}</p>
                 </div>   
             </Link>    
         </div>

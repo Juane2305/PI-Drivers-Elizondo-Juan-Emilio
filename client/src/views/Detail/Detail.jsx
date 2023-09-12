@@ -38,7 +38,7 @@ const Detail = () => {
                     <img className={styles.img} src={driverDetail?.image ? driverDetail.image : 'img'} alt="img" />
                 </div>
                 <div className={styles.infoDiv}>
-                    <p><strong>Description: </strong>{driverDetail?.description}</p>
+                    <p><strong>Description: </strong>{driverDetail?.description? driverDetail.description : 'Formula 1 driver'}</p>
                     <span><strong>Birthdate:</strong> {driverDetail?.birthdate}</span>
                     <p><strong>Teams:</strong> {driverDetail?.team}</p>
                 </div>

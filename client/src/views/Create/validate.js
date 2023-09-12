@@ -14,9 +14,9 @@ const validate = ({name, lastname, nationality, image, birthdate, description, t
     if(!lastname){
         errors.lastname = 'Por favor, ingrese un apellido'
     }else if(lastname.length < 2 || lastname.length > 40 ){
-        errors.name = 'El apellido debe contener mas de 2 caracteres y menos de 40'
+        errors.lastname = 'El apellido debe contener mas de 2 caracteres y menos de 40'
     }else if(regexNotNumbers.test(name.trim())){
-        errors.name = 'No se permiten números'
+        errors.lastname = 'No se permiten números'
     }
 
     if(!nationality){

@@ -5,7 +5,7 @@
     margin: 80px;
     width: 400px;
     height: 350px;
-    background-color: rgba(27, 22, 22, 0.918);
+    background-color: rgba(0, 0, 0, 0.384);
     position: relative;
     transform: translateZ(0);
     transition: transform 0.35s ease-out;
@@ -38,6 +38,7 @@
  .name {
     font-size: 25px;
     padding-bottom: 30px;
+    font-weight: 700;
  }
 
 

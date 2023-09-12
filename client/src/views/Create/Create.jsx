@@ -88,87 +88,89 @@ const Create = () => {
 
 
     return (
-        <div>
-            <div>
-                <Link to='/home'>
-                    <button>Home</button>
-                </Link>
-            </div>
-            <form>
+        <div className={styles.background}>
                 <div>
-                    <label>Name
-                        <input type='text' name='name' value={input.name} onChange={handleChange}/>
-                        {error.name && <span>{error.name}</span>}
-                    </label>
+                    <Link to='/home'>
+                        <button className={styles.button}>Home</button>
+                    </Link>
                 </div>
-                <div>
-                    <label>Lastname
-                        <input name='lastname' value={input.lastname} onChange={handleChange}/>
-                    </label>
-                    {error.lastname && <span>{error.lastname}</span>}
+                <div className={styles.title}>
+                    <h1>Create a new driver</h1>
                 </div>
-                <div>
-                    <label>Nationality
-                        <input name='nationality' value={input.nationality} onChange={handleChange}/>
-                    </label>
-                    {error.nationality && <span>{error.nationality}</span>}
-                </div>
-                <div>
-                    <label>Image
-                        <input name='image' value={input.image} onChange={handleChange} placeholder='Agrega una url'/>
-                    </label>
-                    {error.image && <span>{error.image}</span>}
-                </div>
-                <div>
-                    <label>Birthdate
-                        <input type='date' name='birthdate' value={input.birthdate} onChange={handleChange}/>
-                    </label>
-                    {error.birthdate && <span>{error.birthdate}</span>}
-                </div>
-                <div>
-                    <label>Description
-                        <input name='description' value={input.description} onChange={handleChange}/>
-                    </label>
-                    {error.description && <span>{error.description}</span>}
-                </div>
-                <div>
-                    <label>Teams
-                        <select value={teams} onChange={(e) =>handleTeamChoices(e)}>
-                            <option value="all"></option>
-                            {teams.map((team)=>{
-                                return(
-                                    <option value={team} key={team}>
-                                        {team}
-                                    </option>
-                                )
-                            })}
-                        </select>
-                    </label>
-                </div>
-
-                <div>
-                    <p>Equipo/s del nuevo driver</p>
-
-                    <ul>
-                        <li>{input.team.map((team)=>team + ', ')}</li>
-                    </ul>
-                
-
-
-
-                    <button type='submit' onClick={handleSubmit} disabled={
-                      error.name || error.lastname || error.nationality || error.image || error.birthdate || error.description || error.team
-                    }>Crear piloto</button>
-                </div>
-
-            </form>
-            <div>
-                {input.team.map((team) => 
-                    <div>
-                        <p>{team}</p>
-                        <button onClick={()=>handleDelete(team)}>X</button>
+            <div className={styles.containerForm}>
+                <form className={styles.form}>
+                    <div className={styles.everyInput}>
+                        <label className={styles.label}>Name</label>
+                            <input className={styles.box} type='text' name='name' value={input.name} onChange={handleChange}/>
+                            {error.name && <span className={styles.error}>{error.name}</span>}
+                        
                     </div>
-                )}
+                    <div className={styles.everyInput}>
+                        <label className={styles.label}>Lastname</label>
+                            <input className={styles.box} name='lastname' value={input.lastname} onChange={handleChange}/>
+                        
+                        {error.lastname && <span className={styles.error}>{error.lastname}</span>}
+                    </div>
+                    <div className={styles.everyInput}>
+                        <label className={styles.label}>Nationality</label>
+                            <input className={styles.box} name='nationality' value={input.nationality} onChange={handleChange}/>
+                        
+                        {error.nationality && <span className={styles.error}>{error.nationality}</span>}
+                    </div>
+                    <div className={styles.everyInput}>
+                        <label className={styles.label}>Image</label>
+                            <input className={styles.box} name='image' value={input.image} onChange={handleChange} placeholder='Agrega una url'/>
+                        
+                        {error.image && <span className={styles.error}>{error.image}</span>}
+                    </div>
+                    <div className={styles.everyInput}>
+                        <label className={styles.label}>Birthdate</label>
+                            <input className={styles.box} type='date' name='birthdate' value={input.birthdate} onChange={handleChange}/>
+                        
+                        {error.birthdate && <span className={styles.error}>{error.birthdate}</span>}
+                    </div>
+                    <div className={styles.everyInput}>
+                        <label className={styles.label}>Description</label>
+                            <input className={styles.box} name='description' value={input.description} onChange={handleChange}/>
+                        
+                        {error.description && <span className={styles.error}>{error.description}</span>}
+                    </div>
+                    <div className={styles.everyInput}>
+                        <label className={styles.label}>Teams</label>
+                            <select className={styles.box} value={teams} onChange={(e) =>handleTeamChoices(e)}>
+                                <option value="all"></option>
+                                {teams.map((team)=>{
+                                    return(
+                                        <option value={team} key={team}>
+                                            {team}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                        
+                            {error.team && <span className={styles.error}>{error.team}</span>}
+                    </div>
+
+                    <div className={styles.teamSelected}>
+                        <p className={styles.label}>Team/s of the new driver</p>
+
+                    
+
+                    <div className={styles.selected}>
+                        {input.team.map((team) => 
+                            <div className={styles.teamSelected}>
+                                <span className={styles.p} onClick={()=>handleDelete(team)}>{team}</span>
+                            </div>
+                        )}
+                    </div>
+
+
+                        <button className={styles.createButton} type='submit' onClick={handleSubmit} disabled={
+                        error.name || error.lastname || error.nationality || error.image || error.birthdate || error.description || error.team || !input.name
+                        }>Crear piloto</button>
+                    </div>
+
+                </form>
             </div>
         </div>
                     
