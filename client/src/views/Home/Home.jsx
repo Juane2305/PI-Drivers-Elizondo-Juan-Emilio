@@ -10,7 +10,7 @@ import Pagination from "./Pagination/Pagination";
 const Home = () => {
 
     const dispatch = useDispatch();
-    const allDrivers = useSelector((state)=> state.allDrivers);
+    const allDrivers = useSelector((state)=> state.drivers);
     const [driversQt, setDriversQt] = useState(9)
     const [currentPage, setCurrentPage] = useState(1)
     const [searchString, setSearchString] = useState("");

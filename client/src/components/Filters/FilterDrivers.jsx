@@ -10,7 +10,7 @@ const FilterDrivers = () => {
     // constants 
 
     const dispatch = useDispatch();
-    const drivers = useSelector(state=> state.driversFiltered);
+    const drivers = useSelector(state => state.driversFiltered);
     const [order, setOrder] = useState('');
     const [team, setTeam] = useState('all')
 
