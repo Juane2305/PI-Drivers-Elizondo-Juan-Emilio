@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { filterByOrigin, getAllDrivers, getAllTeams, filterByTeam, orderByBirthdateAsc, orderByBirthdateDesc, orderByName } from '../../redux/actions';
-import Card from '../Card/Card'
 import styles from './filters.module.css'
 
 const FilterDrivers = () => {
@@ -28,7 +27,14 @@ const FilterDrivers = () => {
 
     const handleOrderByName = (event) => {
         dispatch(orderByName(event.target.value));
-        setOrder(`Ordered ${event.target.value}`)
+    }
+
+    const handleOrderByBirthdateAsc = (event) => {
+        dispatch(orderByBirthdateAsc(event.target.value));
+    }
+
+    const handleOrderByBirthdateDesc = (event) => {
+        dispatch(orderByBirthdateDesc(event.target.value))
     }
 
     const handleFilterByOrigin = (event) => {
@@ -67,6 +73,17 @@ const FilterDrivers = () => {
                         </option>
                     )
                 })}
+            </select>
+            <div>Order by name</div>
+            <select onChange={event => {handleOrderByName(event)}}>
+                <option>By Name</option>
+                <option value="a-z">a-z</option>
+                <option value="z-a">z-a</option>
+            </select>
+            <div>Order by birthdate</div>
+            <select>
+                <option onClick={event => {handleOrderByBirthdateAsc(event)}}>Asc</option>
+                <option onClick={handleOrderByBirthdateDesc}>Desc</option>
             </select>
 
             

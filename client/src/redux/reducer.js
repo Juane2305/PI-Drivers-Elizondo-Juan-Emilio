@@ -21,7 +21,7 @@ const reducer = (state = initialState, { type, payload }) => {
         case GET_ALL_TEAMS:
             return{...state, allTeams:payload}
         case GET_BY_NAME:
-            return {...state, allDrivers:payload}
+            return {...state, drivers:payload}
         case ORDER_BY_NAME:
             let ordered = payload === 'a-z' ? state.drivers.sort((a, b) => {
                 if(a.name > b.name) {
