@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import styles from './create.module.css'
-import { Link } from 'react-router-dom';
-import validate from './validate';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTeams, createNewDriver } from '../../redux/actions';
+import { Link } from 'react-router-dom';
+import validate from './validate';
+import styles from './create.module.css'
 
 const Create = () => {
 

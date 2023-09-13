@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { filterByOrigin, getAllDrivers, getAllTeams, filterByTeam } from '../../redux/actions';
+import { filterByOrigin, getAllDrivers, getAllTeams, filterByTeam, orderByBirthdateAsc, orderByBirthdateDesc, orderByName } from '../../redux/actions';
 import Card from '../Card/Card'
 import styles from './filters.module.css'
 
@@ -25,6 +25,12 @@ const FilterDrivers = () => {
         }
     )
 
+
+    const handleOrderByName = (event) => {
+        dispatch(orderByName(event.target.value));
+        setOrder(`Ordered ${event.target.value}`)
+    }
+
     const handleFilterByOrigin = (event) => {
         dispatch(filterByOrigin(event.target.value))
         setOrder(`Ordered ${event.target.value}`)
@@ -46,7 +52,7 @@ const FilterDrivers = () => {
         <div>
             <div className="filters">
                 <select onChange={event => {handleFilterByOrigin(event)}}>
-                    <option value="All">All Drivers</option>
+                    <option value="all">All Drivers</option>
                     <option value="api">Api drivers</option>
                     <option value="from_DB">My drivers</option>
                 </select>

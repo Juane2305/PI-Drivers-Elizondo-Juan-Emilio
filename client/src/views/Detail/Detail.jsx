@@ -2,8 +2,8 @@ import { getByDetail, resetDetail } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import styles from './detail.module.css'
 import { Link } from 'react-router-dom';
+import styles from './detail.module.css'
 
 
 
