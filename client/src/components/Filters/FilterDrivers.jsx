@@ -9,7 +9,6 @@ const FilterDrivers = () => {
     // constants 
 
     const dispatch = useDispatch();
-    const drivers = useSelector(state => state.driversFiltered);
     const [order, setOrder] = useState('');
     const [team, setTeam] = useState('all')
 
@@ -39,13 +38,11 @@ const FilterDrivers = () => {
 
     const handleFilterByOrigin = (event) => {
         dispatch(filterByOrigin(event.target.value))
-        setOrder(`Ordered ${event.target.value}`)
     }
 
     const handleFilterByTeam = (event) => {
         setTeam(event.target.value)
         dispatch(filterByTeam(event.target.value));
-        setOrder(`Ordered ${event.target.value}`)
     }
 
 
@@ -53,6 +50,8 @@ const FilterDrivers = () => {
         dispatch(getAllDrivers())
         dispatch(getAllTeams())
     },[dispatch]);
+
+
 
     return (
         <div>
@@ -63,6 +62,8 @@ const FilterDrivers = () => {
                     <option value="from_DB">My drivers</option>
                 </select>
             </div>
+
+
             <div>Filter drivers by team</div>
             <select value={team} onChange={event=>{handleFilterByTeam(event)}}>
                 <option value="all">All teams</option>
@@ -74,16 +75,22 @@ const FilterDrivers = () => {
                     )
                 })}
             </select>
+
+
+
             <div>Order by name</div>
-            <select onChange={event => {handleOrderByName(event)}}>
-                <option>By Name</option>
-                <option value="a-z">a-z</option>
-                <option value="z-a">z-a</option>
+            <select onChange={handleOrderByName}>
+                <option value='name'>By Name</option>
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
             </select>
+
+
+
             <div>Order by birthdate</div>
             <select>
-                <option onClick={event => {handleOrderByBirthdateAsc(event)}}>Asc</option>
-                <option onClick={handleOrderByBirthdateDesc}>Desc</option>
+                <option value='asc' onClick={event => {handleOrderByBirthdateAsc(event)}}>Asc</option>
+                <option value='desc' onClick={handleOrderByBirthdateDesc}>Desc</option>
             </select>
 
             

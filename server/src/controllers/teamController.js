@@ -48,28 +48,9 @@ const getTeams = async () => {
   }
 };
 
-// const getTeams = async () => {
-//   const response = await axios.get(URL);
-//   try {
-//     let teamsData = response.data
-//       .map((driver) => (driver.teams ? driver.teams : "No info"))
-//       .map((team) => team?.split(", "));
-//     let eachTeam = [...new Set(teamsData.flat())];
-//     eachTeam.forEach((el) => {
-//       if (el) {
-//         Team.findOrCreate({
-//           where: { name: el },
-//         });
-//       }
-//     });
-//     eachTeam = await Team.findAll();
 
-//     return eachTeam;
 
-//   } catch (error) {
-//     throw new Error((error = error.message));
-//   }
-// };
+
 module.exports = {
   getTeams,
 };

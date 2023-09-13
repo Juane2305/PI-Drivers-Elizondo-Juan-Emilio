@@ -40,7 +40,7 @@ const validate = ({name, lastname, nationality, image, birthdate, description, t
         errors.description = 'La descripción debe contener al menos 10 caracteres'
     }
 
-    if(!team){
+    if(team === null){
         errors.team = 'Por favor, seleccione al menos un equipo'
     }
 

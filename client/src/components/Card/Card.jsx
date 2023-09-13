@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom'
 
 const Card = ({driver}) => {
 
+    
+
+
     return (
         <div className={style.card}>
             <Link className={style.link} to={`/home/${driver.id}`}>

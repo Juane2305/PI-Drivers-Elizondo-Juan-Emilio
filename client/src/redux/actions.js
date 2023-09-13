@@ -17,6 +17,7 @@ export const getAllTeams = () => {
 }
 
 export const orderByName = (payload) => {
+    console.log("Action: orderByName payload:", payload);
     return{ type: ORDER_BY_NAME, payload }
 }
 
