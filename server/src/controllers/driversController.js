@@ -1,6 +1,5 @@
 const { Driver } = require('../db');
 const { Team } = require('../db');
-const api = require('../../api/db.json');
 const { Error } = require('sequelize');
 const axios = require('axios')
 
@@ -42,12 +41,12 @@ const getDriverFromDb= async()=> {
     let fromDb= dbData.map((driver)=>{
         return {
         id: driver.id,
-        name: driver.name.forname,
+        name: driver.name,
         lastname: driver.lastname,
         image: driver.image,
         birthdate: driver.birthdate,
         nationality: driver.nationality,
-        team: driver.team,
+        team: driver.team? driver.team.map (el=> el.name).join(', '): 'Sin equipo actualmente',
         from_DB: true,
         }
     });

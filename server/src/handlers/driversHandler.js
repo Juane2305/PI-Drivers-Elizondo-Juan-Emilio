@@ -24,6 +24,7 @@ const getDriverByIdHandler = async(req, res) => {
 
     try {
         let result = await getDriversById(id, origin);
+        if(result.error) throw new Error(result.error)
 
         res.status(200).json(result);
 

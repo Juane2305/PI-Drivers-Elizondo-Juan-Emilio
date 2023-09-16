@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { filterByOrigin, getAllDrivers, getAllTeams, filterByTeam, orderByBirthdateAsc, orderByBirthdateDesc, orderByName } from '../../redux/actions';
+import { filterByOrigin, getAllDrivers, getAllTeams, filterByTeam, orderByBirthdateAsc, orderByBirthdateDesc, orderByName, getByName } from '../../redux/actions';
 import styles from './filters.module.css'
 
 const FilterDrivers = () => {
@@ -9,7 +9,6 @@ const FilterDrivers = () => {
     // constants 
 
     const dispatch = useDispatch();
-    const [order, setOrder] = useState('');
     const [team, setTeam] = useState('all')
 
 
@@ -56,6 +55,7 @@ const FilterDrivers = () => {
     return (
         <div>
             <div className="filters">
+                <div>Filter by origin</div>
                 <select onChange={event => {handleFilterByOrigin(event)}}>
                     <option value="all">All Drivers</option>
                     <option value="api">Api drivers</option>
@@ -64,7 +64,7 @@ const FilterDrivers = () => {
             </div>
 
 
-            <div>Filter drivers by team</div>
+            <div>Filter by team</div>
             <select value={team} onChange={event=>{handleFilterByTeam(event)}}>
                 <option value="all">All teams</option>
                 {teams.map((team) =>{
@@ -79,7 +79,7 @@ const FilterDrivers = () => {
 
 
             <div>Order by name</div>
-            <select onChange={handleOrderByName}>
+            <select onChange={event => {handleOrderByName(event)}}>
                 <option value='name'>By Name</option>
                 <option value="a-z">A-Z</option>
                 <option value="z-a">Z-A</option>

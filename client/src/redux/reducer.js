@@ -16,7 +16,7 @@ const reducer = (state = initialState, { type, payload }) => {
             return{
                 ...state,
                 drivers: payload,
-                allDrivers:payload
+                allDrivers:payload,
             }
         case GET_ALL_TEAMS:
             return{...state, allTeams:payload}
