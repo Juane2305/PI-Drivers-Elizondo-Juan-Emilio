@@ -9,14 +9,14 @@ const axios = require('axios')
 const getDriversFromApi = async () => {
 
     let apiData = await axios('http://localhost:5000/drivers')
-
+    let image = 'https://www.autofacil.es/wp-content/uploads/2022/11/Max-Verstappen-F1-campeon-2022-1200x650.jpg'
     let fromApi = apiData.data.map((driver) => {
 
         return{
             id: driver.id,
             name: driver.name.forename,
             lastname: driver.name.surname,
-            image: driver.image.url,
+            image: driver.image.url? driver.image.url : image,
             nationality: driver.nationality,
             birthdate: driver.dob,
             description: driver.description,
@@ -68,6 +68,7 @@ const getDrivers = async() => {
 // Esta funcion va a traer la información que coincida con el id, si no coincide lanzo un error.
 
 const getDriversById = async(id, origin) => {
+    let image = 'https://www.autofacil.es/wp-content/uploads/2022/11/Max-Verstappen-F1-campeon-2022-1200x650.jpg'
     try {
         if(origin === 'db') {
             let driverDB = await Driver.findOne({
@@ -103,7 +104,7 @@ const getDriversById = async(id, origin) => {
                     id: driverr.id,
                     name: driverr.name.forename,
                     lastname: driverr.name.surname,
-                    image: driverr.image.url,
+                    image: driverr.image.url? driverr.image.url : image,
                     description: driverr.description,
                     nationality: driverr.nationality,
                     birthdate: driverr.dob,
@@ -160,7 +161,7 @@ const createNewDriver = async(name, lastname, description, image, nationality, b
                 name: team
             }
         })
-        await newDriver.addTeam(team1);
+        await newDriver.addTeams(team1);
     }
 }
 
