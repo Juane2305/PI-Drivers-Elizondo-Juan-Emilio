@@ -23,29 +23,15 @@ const reducer = (state = initialState, { type, payload }) => {
         case GET_BY_NAME:
             return {...state, drivers:payload}
         case ORDER_BY_NAME:
-            console.log("Reducer: ORDER_BY_NAME payload:", payload);
-            let ordered = payload === 'a-z' ? state.drivers.sort((a, b) => {
-                if(a.name > b.name) {
-                    return 1;
-                }
-                if(b.name > a.name) {
-                    return -1;
-                }
-                return 0;
-            }) : state.drivers.sort((a, b) => {
-                if(a.name > b.name) {
-                    return -1;
-                }
-                if(b.name > a.name) {
-                    return 1;
-                }
-                return 0;
-            })
-            console.log("Reducer: Ordered drivers:", ordered);
+            const sortOrder = payload === "a-z" ? 1 : -1;
+            const ordered = [...state.drivers].sort(
+              (a, b) => a.name.localeCompare(b.name) * sortOrder
+            );
+        
             return {
-                ...state,
-                drivers: ordered
-            }
+              ...state,
+              drivers: ordered,
+            };
         case ORDER_BY_BIRTHDATE_ASC:
             return {...state, drivers: payload}
         case ORDER_BY_BIRTHDATE_DESC:
