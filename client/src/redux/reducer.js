@@ -33,7 +33,22 @@ const reducer = (state = initialState, { type, payload }) => {
               drivers: ordered,
             };
         case ORDER_BY_BIRTHDATE_ASC:
-            return {...state, drivers: payload}
+            const driversAsc = [...state.drivers].sort((a, b) => {
+                return new Date(a.birthdate) - new Date(b.birthdate);
+            });
+            return {
+                ...state,
+                  drivers: driversAsc,
+            };
+        case ORDER_BY_BIRTHDATE_DESC:
+            const driversDesc = [...state.drivers].sort((a, b) => {
+                return new Date(b.birthdate) - new Date(a.birthdate);
+            });
+          
+            return {
+                ...state,
+                drivers: driversDesc,
+            };
         case ORDER_BY_BIRTHDATE_DESC:
             return {...state, drivers: payload}
         case GET_BY_DETAIL:

@@ -21,15 +21,14 @@ export const orderByName = (payload) => {
     return{ type: ORDER_BY_NAME, payload }
 }
 
-export const orderByBirthdateAsc = (drivers) => {
-    const result = [...drivers].sort((a, b) => new Date(b.birthdate).getTime() - new Date(a.birthdate).getTime())
-    return { type: ORDER_BY_BIRTHDATE_ASC, payload: result }
-}
-
-export const orderByBirthdateDesc = (drivers) => {
-    const result = [...drivers].sort((a, b) => new Date(a.birthdate).getTime() - new Date(b.birthdate).getTime())
-    return { type: ORDER_BY_BIRTHDATE_DESC, payload: result }
-}
+export const orderByBirthdateAsc = () => {
+    return { type: ORDER_BY_BIRTHDATE_ASC };
+  };
+  
+export const orderByBirthdateDesc = () => {
+    return { type: ORDER_BY_BIRTHDATE_DESC };
+   
+};
 
 
 export const filterByOrigin = (payload) => {
