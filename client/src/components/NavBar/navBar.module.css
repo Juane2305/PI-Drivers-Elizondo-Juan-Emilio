@@ -1,7 +1,7 @@
 .container{
-    padding: 35px 0;
+    padding: 15px 0;
     width: 100vw;
-    background-color: rgb(121, 0, 0);
+    background-color: rgba(0, 0, 0, 0.219);
     display: flex;
     justify-content: space-around;
     align-items: center; 
@@ -12,7 +12,7 @@
     height: 40px;
     border-radius: 5px;
     margin-left: 30px;
-    background-color: rgb(37, 36, 36);
+    background-color: black;
     border-style: none;
     color: aliceblue;
     font-weight: 700;
@@ -23,7 +23,10 @@
 }
 
 .button:hover{
-    transform: scale(1.1);
-    transition: 0.7s;
+    transform: scale(1.03);
+    transition: 0.3s;
 }
 
+.searchBar{
+    margin-left: 100px;
+}

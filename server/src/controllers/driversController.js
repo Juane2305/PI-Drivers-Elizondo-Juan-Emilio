@@ -30,6 +30,7 @@ const getDriversFromApi = async () => {
 // Esta función es para traer toda la data desde la base de datos.
 
 const getDriverFromDb= async()=> {
+    
     let dbData= await Driver.findAll({
     include: [{
         model: Team,
@@ -68,7 +69,7 @@ const getDrivers = async() => {
 // Esta funcion va a traer la información que coincida con el id, si no coincide lanzo un error.
 
 const getDriversById = async(id, origin) => {
-    let image = 'https://www.autofacil.es/wp-content/uploads/2022/11/Max-Verstappen-F1-campeon-2022-1200x650.jpg'
+    
     try {
         if(origin === 'db') {
             let driverDB = await Driver.findOne({
@@ -148,6 +149,7 @@ const createNewDriver = async(name, lastname, description, image, nationality, b
         throw new Error('Falta información. Complete todos los campos requeridos.')
     }
     else {
+        
         let newDriver = await Driver.create({
             name: name,
             lastname: lastname,

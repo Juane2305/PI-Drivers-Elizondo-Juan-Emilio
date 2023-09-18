@@ -9,7 +9,6 @@ import {
   orderByBirthdateAsc,
   orderByBirthdateDesc,
   orderByName,
-  getByName,
 } from "../../redux/actions";
 import styles from "./filters.module.css";
 
@@ -54,10 +53,10 @@ const FilterDrivers = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div className="filters">
+    <div className={styles.flex}>
+      <div>
         <div>Filter by origin</div>
-        <select
+        <select className={styles.input}
           onChange={(event) => {
             handleFilterByOrigin(event);
           }}
@@ -66,42 +65,45 @@ const FilterDrivers = () => {
           <option value="api">Api drivers</option>
           <option value="from_DB">My drivers</option>
         </select>
+      
+
+        <div>Filter by team</div>
+        <select className={styles.input}
+          value={team}
+          onChange={(event) => {
+            handleFilterByTeam(event);
+          }}
+        >
+          <option value="all">All teams</option>
+          {teams.map((team) => {
+            return (
+              <option value={team} key={team}>
+                {team}
+              </option>
+            );
+          })}
+        </select>
       </div>
 
-      <div>Filter by team</div>
-      <select
-        value={team}
-        onChange={(event) => {
-          handleFilterByTeam(event);
-        }}
-      >
-        <option value="all">All teams</option>
-        {teams.map((team) => {
-          return (
-            <option value={team} key={team}>
-              {team}
-            </option>
-          );
-        })}
-      </select>
+      <div>
+        <div>Order by name</div>
+        <select className={styles.input}
+          onChange={(event) => {
+            handleOrderByName(event);
+          }}
+        >
+          <option value="name">By Name</option>
+          <option value="a-z">A-Z</option>
+          <option value="z-a">Z-A</option>
+        </select>
 
-      <div>Order by name</div>
-      <select
-        onChange={(event) => {
-          handleOrderByName(event);
-        }}
-      >
-        <option value="name">By Name</option>
-        <option value="a-z">A-Z</option>
-        <option value="z-a">Z-A</option>
-      </select>
-
-      <div>Order by birthdate</div>
-      <select onChange={handleOrderByBirthdate}>
-        <option value="bybirthdate">By Birthdate</option>
-        <option value="asc">Asc</option>
-        <option value="desc">Desc</option>
-      </select>
+        <div>Order by birthdate</div>
+        <select className={styles.input} onChange={handleOrderByBirthdate}>
+          <option value="bybirthdate">By Birthdate</option>
+          <option value="asc">Asc</option>
+          <option value="desc">Desc</option>
+        </select>
+      </div>
     </div>
   );
 };

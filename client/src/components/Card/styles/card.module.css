@@ -5,14 +5,14 @@
     margin: 80px;
     width: 400px;
     height: 350px;
-    background-color: rgba(0, 0, 0, 0.384);
+    background-color: rgba(0, 0, 0, 0.664);
     position: relative;
     transform: translateZ(0);
     transition: transform 0.35s ease-out;
     cursor: pointer;
 }
 .card:hover{
-    transform: scale(1.05);
+    transform: scale(1.03);
     transition: 0.3s;
 }
 

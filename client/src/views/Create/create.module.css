@@ -3,6 +3,7 @@
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
+    padding-bottom: 30px;
 }
 
 
@@ -11,7 +12,7 @@
     height: 40px;
     border-radius: 5px;
     margin-left: 30px;
-    background-color: rgb(37, 36, 36);
+    background-color: black;
     border-style: none;
     color: aliceblue;
     font-weight: 700;
@@ -75,9 +76,9 @@
 }
 
 .containerForm {
-    padding: 50px;
+    padding: 10px 0px 30px 0px;
     width: 30vw;
-    background-color: rgba(0, 0, 0, 0.514);
+    background-color: rgb(0, 0, 0);
     margin: 0px auto;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -124,12 +125,12 @@
     border-style: none;
     font-size: 18px;
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.918);
+    color: rgba(255, 255, 255, 0.918);
 }
 
 .createButton:hover {
     color: rgb(214, 13, 13);
-    background-color: rgba(0, 0, 0, 0.918);
+    background-color: rgba(255, 255, 255, 0.918);
     transform: scale(1.1);
     transition: 0.7s;
 }
