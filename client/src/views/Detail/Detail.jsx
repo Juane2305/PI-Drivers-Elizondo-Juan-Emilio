@@ -28,7 +28,7 @@ const Detail = () => {
     return (
         <div className={styles.container}>
             <Link to='/home'>
-                <button className={styles.button}>Home</button>
+                <button className={styles.button}>↩</button>
             </Link>
             <div className={styles.containerDetail}>
                 <h3>ID: {driverDetail?.id}</h3>
