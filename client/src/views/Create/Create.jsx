@@ -137,11 +137,11 @@ const Create = () => {
                     </div>
                     <div className={styles.everyInput}>
                         <label className={styles.label}>Teams</label>
-                            <select className={styles.box} value={teams} onChange={(e) =>handleTeamChoices(e)}>
+                            <select className={styles.box} onChange={(e) =>handleTeamChoices(e)}>
                                 <option value="all"></option>
-                                {teams.map((team)=>{
+                                {teams.map((team, index)=>{
                                     return(
-                                        <option value={team} key={team}>
+                                        <option key={index} value={team} >
                                             {team}
                                         </option>
                                     )
@@ -157,9 +157,9 @@ const Create = () => {
                     
 
                     <div className={styles.selected}>
-                        {input.team.map((team) => 
-                            <div className={styles.teamSelected}>
-                                <span className={styles.p} onClick={()=>handleDelete(team)}>{team}</span>
+                        {input.team.map((team, index) => 
+                            <div key={index} className={styles.teamSelected}>
+                                <span className={styles.p}  onClick={()=>handleDelete(team)}>{team}</span>
                             </div>
                         )}
                     </div>

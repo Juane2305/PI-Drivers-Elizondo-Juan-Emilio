@@ -69,6 +69,7 @@ const Pagination = ({nPages, currentPage, setCurrentPage}) => {
                     <span onClick={prev}>Prev</span>
                 </div>
                 <div className={styles.pagination}>
+                    <span className={styles.currentPage}><strong>Página actual: {currentPage}</strong></span>
                     <span>{generatePageNumbers()}</span>
                 </div>
                 <div className={styles.h3}>

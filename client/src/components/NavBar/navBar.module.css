@@ -1,6 +1,6 @@
 .container{
     padding: 15px 0;
-    width: 100vw;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.219);
     display: flex;
     justify-content: space-around;

@@ -47,7 +47,7 @@ const getDriverFromDb= async()=> {
         image: driver.image,
         birthdate: driver.birthdate,
         nationality: driver.nationality,
-        team: driver.team? driver.team.map (el=> el.name).join(', '): 'Sin equipo actualmente',
+        team: driver.team? driver.team.map(el=> el.name).join(', '): 'Sin equipo',
         from_DB: true,
         }
     });
@@ -91,8 +91,8 @@ const getDriversById = async(id, origin) => {
                     description: driverDB.description,
                     nationality: driverDB.nationality,
                     birthdate: driverDB.birthdate,
-                    team: driverDB.teams
-                        ? driverDB.teams.map((e) => e.name).join(', ')
+                    team: driverDB.team
+                        ? driverDB.team.map((e) => e.name).join(', ')
                         : 'Sin equipo',
                     from_DB: true
                 }
@@ -131,7 +131,6 @@ const getDriversByName = async(name) => {
 
     if(resultadoNombre.length > 15) {
         let sliced = resultadoNombre.slice(0,15)
-        
         return sliced;
     }
     else if(resultadoNombre.length < 15){
